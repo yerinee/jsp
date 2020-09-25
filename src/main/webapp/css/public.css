@@ -1,0 +1,38 @@
+@CHARSET "UTF-8";
+
+	table{
+		margin-left :35%;
+	}
+
+.navelogo {
+	background: white;
+	height: 100px;
+}
+
+  #gsj{
+   	 	width : 168px;
+    	height : 35px;
+  		}
+
+.navelogo .nav li a:hover {
+	font-size: 1.2em;
+}
+	.collapse navbar-collapse{
+		height : 50px;
+	}
+  
+  .navbar-inverse{
+  border-color : #779af5;
+  background-color: #779af5;
+  }
+
+body {
+    margin: 0; /* 리셋을 하지 않은 경우 추가 */
+}
+
+#myCarousel {
+    min-height: calc(100vh - 20px);
+}
+footer {
+    height: 20px;
+}
