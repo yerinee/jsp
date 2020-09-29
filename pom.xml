@@ -6,7 +6,12 @@
 	<artifactId>jsp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-
+	
+	<properties>
+		<project.build.sorceEncoding>utf-8</project.build.sorceEncoding>
+	</properties>
+	
+	
 	<build>
 		<plugins>
 			<plugin>
