@@ -8,7 +8,7 @@
 	<packaging>war</packaging>
 	
 	<properties>
-		<project.build.sorceEncoding>utf-8</project.build.sorceEncoding>
+		<project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
 	</properties>
 	
 	
