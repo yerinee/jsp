@@ -11,6 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import kr.or.ddit.member.model.MemberVO;
+import kr.or.ddit.member.service.MemberService;
+import kr.or.ddit.member.service.MemberServiceI;
+
 /**
  * Servlet implementation class login
  */
@@ -30,6 +34,19 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userId = request.getParameter("userId");
 		String password = request.getParameter("password");
+		
+		
+		MemberServiceI memberservice = new MemberService();
+		MemberVO membervo = memberservice.getMember(userId);
+		
+		// 디비에 등록된 회원이 없거나, 비밀번호가 틀린경우 (로그인 페이지)
+		if(membervo == null || !membervo.getPassword().equals(password)) {
+			request.getRequestDispatcher("/login.jsp").forward(request, response); 
+			
+		}else if (membervo.getPassword().equals(password)){ //비밀번호가 일치하는 경우(메인페이지 이동)
+			request.getSession().setAttribute("S_MEMBER", membervo);
+			request.getRequestDispatcher("/main.jsp").forward(request, response); 
+		}
 		
 		logger.debug("userId : {}, password : {}", userId, password);
 		
