@@ -1,3 +1,5 @@
+<%@page import="kr.or.ddit.job.model.JobsVO"%>
+<%@page import="java.util.List"%>
 <%@page import="kr.or.ddit.member.model.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -20,6 +22,23 @@
 <link href="<%=request.getContextPath() %>/css/bootstrap.css" rel="stylesheet"><!-- Bootstrap core CSS -->
 <link href="<%=request.getContextPath() %>/css/dashboard.css" rel="stylesheet">
 <link href="<%=request.getContextPath() %>/css/blog.css" rel="stylesheet">
+
+<style>
+	td {
+		border : 1px solid black;
+		width : 200px;
+		padding: 5px;
+	}
+	th{
+		font-weight: bold;
+		font-size: 1.2em;
+		width : 200px;
+		padding: 5px;
+	}
+
+</style>
+
+
 </head>
 
 <body>
@@ -62,9 +81,32 @@
 			<ul class="nav nav-sidebar">
 				<li class="active"><a href="#">Main <span class="sr-only">(current)</span></a></li>
 				<li class="active"><a href="#">사용자</a></li>
-				<li class="active"><a href="#">Jobs</a></li>
+				<li class="active"><a href="<%=request.getContextPath()%>/JoblistServlet">Jobs</a></li>
 			</ul>
 		</div>
+		<%
+			if(request.getAttribute("joblist")!= null){	
+				List<JobsVO> joblist = (List<JobsVO>)request.getAttribute("joblist");
+		%>
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 jobs">
+			<table>
+			<tr><th>Job_Id</th><th>Job_Title</th></tr>
+		<% 
+				for(int i =0; i<joblist.size();i++){
+		%>
+
+			<tr>
+				<td class ="jid"><%=joblist.get(i).getJob_id() %></td>
+				<td><%=joblist.get(i).getJob_title() %></td>
+			</tr>
+	
+			
+			<%	}%>
+			</table>
+		</div>
+		<%}else{%>
+		
+		
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				
 
@@ -102,6 +144,7 @@
 				<!-- /.blog-main -->
 			</div>	
 		</div>
+		<%} %>
 	</div>
 </div>
 
