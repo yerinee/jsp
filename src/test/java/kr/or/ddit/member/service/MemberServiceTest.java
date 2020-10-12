@@ -18,14 +18,14 @@ public class MemberServiceTest {
 		
 		MemberVO answerMemberVo = new MemberVO();
 		answerMemberVo.setUserId("brown");
-		answerMemberVo.setPassword("1234");
+		answerMemberVo.setPass("brownPass");
 		
 		/***When***/
 		MemberVO memberVo = memberService.getMember(userId);
 		
 		/***Then***/
 		assertEquals("brown", memberVo.getUserId());
-		assertEquals("1234", memberVo.getPassword());
+		assertEquals("brownPass", memberVo.getPass());
 		
 		assertEquals(answerMemberVo, memberVo);
 	}

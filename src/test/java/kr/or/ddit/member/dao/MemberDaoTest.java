@@ -3,6 +3,8 @@ package kr.or.ddit.member.dao;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.List;
+
 import org.junit.Test;
 
 import kr.or.ddit.member.model.MemberVO;
@@ -18,16 +20,29 @@ public class MemberDaoTest {
 		
 		MemberVO answerMemberVo = new MemberVO();
 		answerMemberVo.setUserId("brown");
-		answerMemberVo.setPassword("1234");
+		answerMemberVo.setPass("brownPass");
 		
 		/***When***/
 		MemberVO memberVo = memberDao.getMember(userId);
 		
 		/***Then***/
-		assertEquals("brown", memberVo.getUserId());
-		assertEquals("1234", memberVo.getPassword());
+//		assertEquals("brown", memberVo.getUserId());
+//		assertEquals("brownPass", memberVo.getPassword());
 		
 		assertEquals(answerMemberVo.toString(), memberVo.toString());
+	}
+	
+	@Test
+	public void selectAllMemberTest() {
+		/***Given***/
+		MemberDao memberDao = new MemberDao();
+	
+		/***When***/
+		List<MemberVO> memberlist = memberDao.selectAllMember();
+		
+		/***Then***/
+		assertEquals(5, memberlist.size());
+
 	}
 
 }
