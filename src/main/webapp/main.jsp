@@ -58,7 +58,7 @@
 				MemberVO memberVo = (MemberVO)session.getAttribute("S_MEMBER");
 	
 			%>
-			<a class="navbar-brand" href="#">JSP/SPRING<%=memberVo == null? "": "[" + memberVo.getUserId() +"]" %></a>
+			<a class="navbar-brand" href="#">JSP/SPRING [${S_MEMBER.userId}]</a>
 		
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
