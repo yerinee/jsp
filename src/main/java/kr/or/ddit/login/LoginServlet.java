@@ -23,12 +23,22 @@ public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private static final Logger logger = LoggerFactory.getLogger(LoginServlet.class);
-       
+    private MemberServiceI memberservice;
+    
+    
 	// Login화면을 클라이언트에게 응답으로 생성
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		req.getRequestDispatcher("/login.jsp").forward(req, resp);
 	}
+	
+	// 매번 servlet을 호출할때마다 실행 시키지 않고 한번만 생성시키기 위해 init()안에 생성시켰다.
+	@Override
+	public void init() throws ServletException {
+		// service 객체 생성
+		memberservice = new MemberService();	
+	}
+	
    
 	// Login 화면에서 사용자가 보낸 아이디 비밀번호를 사용하여 로그인 처리
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -36,7 +46,6 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		
-		MemberServiceI memberservice = new MemberService();
 		MemberVO membervo = memberservice.getMember(userId);
 		
 		// 디비에 등록된 회원이 없거나, 비밀번호가 틀린경우 (로그인 페이지)
