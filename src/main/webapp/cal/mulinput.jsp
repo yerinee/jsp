@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form method ="POST" action ="<%=request.getContextPath()%>/MulServlet">
+	<form method ="POST" action ="${pageContext.request.contextPath }/MulServlet">
 		<label>Start : </label>
 		<input type = "text" name = "start" id ="start" value =""><br>
 		<label>End : </label>

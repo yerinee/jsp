@@ -3,6 +3,7 @@
 <%@page import="kr.or.ddit.member.model.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,12 +17,7 @@
 <link rel="icon" href="../../favicon.ico">
 
 <title>Jsp</title>
-<script src = "<%=request.getContextPath() %>/js/jquery-3.5.1.min.js"></script>
-<script src="<%=request.getContextPath() %>/js/bootstrap.js"></script><!-- Custom styles for this template -->
-
-<link href="<%=request.getContextPath() %>/css/bootstrap.css" rel="stylesheet"><!-- Bootstrap core CSS -->
-<link href="<%=request.getContextPath() %>/css/dashboard.css" rel="stylesheet">
-<link href="<%=request.getContextPath() %>/css/blog.css" rel="stylesheet">
+<%@include file ="/layout/commonLib.jsp" %>
 
 <style>
 	td {
@@ -43,69 +39,55 @@
 
 <body>
 
+<%@ include file="/layout/header.jsp" %>	
+<!-- <nav class="navbar navbar-inverse navbar-fixed-top"> -->
+<!-- 	<div class="container-fluid"> -->
 	
-<nav class="navbar navbar-inverse navbar-fixed-top">
-	<div class="container-fluid">
+<!-- 		<div class="navbar-header"> -->
+<!-- 			<button type="button" class="navbar-toggle collapsed" data-toggle="co -->
+<!-- 			llapse" data-target="#navbar" aria-expanded="false" -->
+<!-- 				aria-controls="navbar"> -->
+<!-- 				<span class="sr-only">Toggle navigation</span> <span -->
+<!-- 					class="icon-bar"></span> <span class="icon-bar"></span> <span -->
+<!-- 					class="icon-bar"></span> -->
+<!-- 			</button> -->
+<%-- 			<% --%>
+<%-- 				MemberVO memberVo = (MemberVO)session.getAttribute("S_MEMBER"); -->
 	
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-				aria-controls="navbar">
-				<span class="sr-only">Toggle navigation</span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-			<%
-				MemberVO memberVo = (MemberVO)session.getAttribute("S_MEMBER");
-	
-			%>
-			<a class="navbar-brand" href="#">JSP/SPRING [${S_MEMBER.userId}]</a>
+
+<!-- 			<a class="navbar-brand" href="#">JSP/SPRING -->
+<%-- <%-- 				<c:if test= "${S_MEMBER != null} "> --%> 
+<%-- <%-- 					[${S_MEMBER.userId}] --%>
+<%-- <%-- 				</c:if> --%> 
+<%-- 				<c:choose> --%>
+<%-- 					<c:when test="${S_MEMBER != null}">[${S_MEMBER.userId}]</c:when>			 --%>
+<%-- 					<c:otherwise></c:otherwise> --%>
+			
+<%-- 				</c:choose> --%>
+<%-- <%-- 			<a class="navbar-brand" href="#">JSP/SPRING [${S_MEMBER.userId}]</a> --%> 
+<!-- 			</a> -->
 		
-		</div>
-		<div id="navbar" class="navbar-collapse collapse">
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">Dashboard</a></li>
-				<li><a href="#">Settings</a></li>
-				<li><a href="#">Profile</a></li>
-				<li><a href="#">Help</a></li>
-			</ul>
-			<form class="navbar-form navbar-right">
-				<input type="text" class="form-control" placeholder="Search...">
-			</form>
-		</div>
-	</div>
-</nav>
+<!-- 		</div> -->
+<!-- 		<div id="navbar" class="navbar-collapse collapse"> -->
+<!-- 			<ul class="nav navbar-nav navbar-right"> -->
+<!-- 				<li><a href="#">Dashboard</a></li> -->
+<!-- 				<li><a href="#">Settings</a></li> -->
+<!-- 				<li><a href="#">Profile</a></li> -->
+<!-- 				<li><a href="#">Help</a></li> -->
+<!-- 			</ul> -->
+<!-- 			<form class="navbar-form navbar-right"> -->
+<!-- 				<input type="text" class="form-control" placeholder="Search..."> -->
+<!-- 			</form> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+<!-- </nav> -->
 <div class="container-fluid">
 	<div class="row">
 			
 		<div class="col-sm-3 col-md-2 sidebar">
-			<ul class="nav nav-sidebar">
-				<li class="active"><a href="#">Main <span class="sr-only">(current)</span></a></li>
-				<li class="active"><a href="#">사용자</a></li>
-				<li class="active"><a href="<%=request.getContextPath()%>/JoblistServlet">Jobs</a></li>
-			</ul>
+			<%@ include file="/layout/left.jsp" %>	
 		</div>
-		<%
-			if(request.getAttribute("joblist")!= null){	
-				List<JobsVO> joblist = (List<JobsVO>)request.getAttribute("joblist");
-		%>
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 jobs">
-			<table>
-			<tr><th>Job_Id</th><th>Job_Title</th></tr>
-		<% 
-				for(int i =0; i<joblist.size();i++){
-		%>
 
-			<tr>
-				<td class ="jid"><%=joblist.get(i).getJob_id() %></td>
-				<td><%=joblist.get(i).getJob_title() %></td>
-			</tr>
-	
-			
-			<%	}%>
-			</table>
-		</div>
-		<%}else{%>
-		
 		
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				
@@ -144,7 +126,7 @@
 				<!-- /.blog-main -->
 			</div>	
 		</div>
-		<%} %>
+		
 	</div>
 </div>
 

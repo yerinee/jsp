@@ -28,7 +28,7 @@ public class JoblistServlet extends HttpServlet {
 		
 		request.setAttribute("joblist", joblist);
 		
-		request.getRequestDispatcher("main.jsp").forward(request, response);
+		request.getRequestDispatcher("jobs.jsp").forward(request, response);
 	}
 
 

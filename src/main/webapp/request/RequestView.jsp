@@ -55,7 +55,7 @@
 	 		method : 요청 방식(form에서는 GET, POST 두가지만 가능하며 DEFAULT는 GET)
 	  --%>
 	 
-	 <form action="<%=request.getContextPath()%>/request/getRequestResponse.jsp" >
+	 <form action="${pageContext.request.contextPath }/request/getRequestResponse.jsp" >
 	 	<label class = "lab">user id: </label>
 	 	<input type = "text" name="userId" value="브라운"><br>
 	 	<label>user id: </label>

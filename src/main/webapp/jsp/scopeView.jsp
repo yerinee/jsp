@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form method ="post" action="<%=request.getContextPath()%>/scopeServelt">
+	<form method ="post" action="${pageContext.request.contextPath }/scopeServelt">
 		<input type = "text" name = "param" /><br>
 		<input type = "submit" value ="전송">
 	</form>
