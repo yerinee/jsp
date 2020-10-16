@@ -6,9 +6,6 @@
     pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
-<%
-	List<MemberVO> memlist = (List<MemberVO>)request.getAttribute("memlist");
-%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,6 +19,11 @@
 <link rel="icon" href="../../favicon.ico">
 
 <title>Jsp</title>
+<script>
+// 	var s = document.getElementById("lines");
+// 	var line = s.options[s.selectedIndex].value;
+	
+</script>
 
 <%@include file ="/layout/commonLib.jsp" %>
 </head>
@@ -37,10 +39,11 @@
 		</div>
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				
-
+		
 		<div class="row">
 			<div class="col-sm-8 blog-main">
 				<h2 class="sub-header">사용자</h2>
+				
 				<div class="table-responsive">
 					<table class="table table-striped">		
 						<tr>
@@ -58,7 +61,7 @@
 								
 		<!-- 					</tr> -->
 		<%-- 				<%} %> --%>
-						<c:forEach items="${memlist }" var="member">
+						<c:forEach items="${memberList }" var="member">
 							<tr>	
 								<td>${member.userId }</td> 
 								<td>${member.usernm }</td>
@@ -68,22 +71,41 @@
 						</c:forEach>
 					</table>
 				</div>
-		
+				
 				<a class="btn btn-default pull-right">사용자 등록</a>
-		
+				page : ${page }
+				pages : ${pages }
+				pageSize : ${pageSize }
+											
 				<div class="text-center">
-					<ul class="pagination">
-						<li><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">5</a></li>
+					<ul class="pagination">	
+						<c:forEach var="i" begin="1" end ="${pages }">
+							<c:choose>
+								<c:when test="${i == page}">
+									<li class="active"><span>${i }</span></li>
+								</c:when>
+								<c:otherwise>                                                                                                                                                                                                                                                                                                                                   
+<!-- 									<select id = "lines"> -->
+<%-- 										<option value ="5" selected>${pageSize}</option> --%>
+<!-- 										<option value ="7"> </option> -->
+										
+<!-- 										<option value ="10">10줄 보기</option> -->
+<!-- 										<option value ="15">15줄 보기</option>								 -->
+<!-- 									</select> -->
+									<li><a href="${pageContext.request.contextPath }/MemberListServlet?page=${i}">${i}</a></li>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>			
+<%-- 						<li><a href="${pageContext.request.contextPath }/MemberListServlet?page=2">2</a></li> --%>
+<%-- 						<li><a href="${pageContext.request.contextPath }/MemberListServlet?page=3">3</a></li> --%>
+<!-- 						<li><a href="#">4</a></li> -->
+<!-- 						<li><a href="#">5</a></li> -->
 					</ul>
 				</div>
 			</div>
-</div>
-	</div>
 		</div>
 	</div>
+	</div>
+</div>
 </body>
 </html>

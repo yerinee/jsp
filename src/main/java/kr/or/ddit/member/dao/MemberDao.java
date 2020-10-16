@@ -1,11 +1,13 @@
 package kr.or.ddit.member.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
 import kr.or.ddit.db.MybatisUtil;
 import kr.or.ddit.member.model.MemberVO;
+import kr.or.ddit.member.model.PageVO;
 
 public class MemberDao implements MemberDaoI{
 
@@ -42,6 +44,27 @@ public class MemberDao implements MemberDaoI{
 		//sqlSession.commit(); // select문은 별도의 영향을 주지않기때문에 commit을 하지 않고 종료해도 된다.
 		sqlSession.close();
 		return memlist;
+	}
+
+	@Override
+	public List<MemberVO> getAllpage(SqlSession sqlSession,Map<String, Integer> map) {
+		
+		//sqlSession.commit(); // select문은 별도의 영향을 주지않기때문에 commit을 하지 않고 종료해도 된다.
+		return sqlSession.selectList("member.getAllpage", map);
+	}
+
+	@Override
+	public int selectMemberCount(SqlSession sqlSession) {	
+
+		return sqlSession.selectOne("member.selectMemberCount");
+	}
+
+	@Override
+	public List<MemberVO> selectAllMemberPage(SqlSession sqlSession, PageVO pagevo) {
+		
+		//sqlSession.commit(); // select문은 별도의 영향을 주지않기때문에 commit을 하지 않고 종료해도 된다.
+		
+		return sqlSession.selectList("member.selectAllMemberPage", pagevo);
 	}
 
 }

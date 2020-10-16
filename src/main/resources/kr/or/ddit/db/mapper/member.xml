@@ -10,8 +10,42 @@
   </select>
   
    <select id="selectAllMember" resultType="MemberVo" >
-    SELECT * 
-    FROM users 
+    
+	select *
+	from users
+<!-- 	where rn between 1 and 7 -->
+
   </select>
+  
+   <select id="getAllpage" resultType="MemberVo" parameterType="map">
+    <!-- <select id="getAllpage" resultType="MemberVo" parameterType="pageVo"> -->
+	select *
+	from(
+	    select rownum rn ,a.*
+	    from (select * 
+	            from users
+	            order by userid) a)
+	where rn between (#{page} -1) * #{pageSize} +1 and #{page} * #{pageSize}
+<!-- 	where rn between 1 and 7 -->
+
+  </select>
+  
+   <select id="selectAllMemberPage" resultType="MemberVo" parameterType="pageVo">
+	select *
+	from(
+	    select rownum rn ,a.*
+	    from (select * 
+	            from users
+	            order by userid) a)
+	where rn between (#{page} -1) * #{pageSize} +1 and #{page} * #{pageSize}
+  </select>
+  
+  
+  <select id="selectMemberCount" resultType="int">
+  	select count(*)
+  	from users
+  </select>
+  
+  
   
 </mapper>

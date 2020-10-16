@@ -135,7 +135,7 @@
         <label for="inputEmail" class="sr-only">Email address</label>
         <input type="email" id="inputEmail" name = "userId" class="form-control" placeholder="Email address" required autofocus value ="brown">
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" name ="password" required value = "1234">
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" name ="password" required value = "brownPass">
         <div class="checkbox">
           <label>
             <input type="checkbox" value="remember-me"> Remember me
