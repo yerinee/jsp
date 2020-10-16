@@ -21,6 +21,7 @@ public class CookieSplit {
 		logger.debug(cookieSplit.getCookieValue("XXXX")); // 기대되는 값 "" (WHITE SPACE)
 		
 		//cookieSplit.getCookieValue("TEST");
+		
 	
 	}
 	

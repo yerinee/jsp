@@ -14,8 +14,18 @@
 
 			a = $('#selectlang option:selected').val();
 			console.log(a);
+			b = $('#selectlang option:checked').text();
+			console.log(b)
+			
+			
+			
+<%-- 			<%request.setAttribute("selected", "selected");%> --%>
+			location.href="${pageContext.request.contextPath }/jstl/jstl_fmt.jsp?lang=" + a
+
 
 		})
+
+
 	
 
 	})
@@ -35,17 +45,59 @@
 		 4. 만약에 사용자가 언어 설정 파라미터를 보내지 않았을 경우 기본적으로 한국어가 설정되게 끔
 		 5. option 태그가 바뀌면 자동으로 jst_fmt.jsp로 재요청
 	 --%>
-	<select id = "selectlang" onchange="location.href=this.value">
-		<option value ="${pageContext.request.contextPath }/jstl/jstl_fmt.jsp?lang=ko" selected>ko</option>
-		<option value ="${pageContext.request.contextPath }/jstl/jstl_fmt.jsp?lang=ja">ja</option>
-		<option value ="${pageContext.request.contextPath }/jstl/jstl_fmt.jsp?lang=en">en</option>		
-	</select>
+<!-- 	<select id = "selectlang" onchange="location.href=this.value"> -->
+	
+<%-- 		<option value ="${pageContext.request.contextPath }/jstl/jstl_fmt.jsp?lang=ko" >ko</option> --%>
+<%-- 		<option value ="${pageContext.request.contextPath }/jstl/jstl_fmt.jsp?lang=ja">ja</option> --%>
+<%-- 		<option value ="${pageContext.request.contextPath }/jstl/jstl_fmt.jsp?lang=en">en</option>		 --%>
+<!-- 	</select> -->
+	
+	<%
+// 		String koParam = "";
+// 		String enParam = "";
+// 		String jaParam ="";
+		
+// 		if(a.equals("ko")){
+// 			koParam = "selected";					
+// 		}else if(a.equals("en")){
+// 			enParam = "selected";			
+// 		}else if(a.equals("ja")){
+// 			jaParam = "selected";			
+// 		}
+	
+	%>
+
 	
 	
 	
 	<!-- locale 정보를 변경 -->
-	<% request.getParameter("lang"); %>
+	
+	
+<%-- 	<fmt:setLocale value="${param.lang }"/> --%>
 	<fmt:setLocale value="${param.lang == null? 'ko' : param.lang }"/>
+	
+	<% 
+		String koparam = "";
+		String japaram ="";
+		String enparam = "";
+		if(request.getParameter("lang") != null){
+			if (request.getParameter("lang").equals("ko")){
+				koparam ="selected";
+			}else if(request.getParameter("lang").equals("ja")){
+				japaram ="selected";
+			}else if(request.getParameter("lang").equals("en")){
+				enparam ="selected";
+			}
+		}
+		
+	%>
+	<select id = "selectlang" >
+		<option value ="ko" <%=koparam %>>ko</option>
+		<option value ="ja" <%=japaram %>>ja</option>
+		<option value ="en" <%=enparam %>>en</option>		
+	</select>
+	
+	
 	
 
 	<!-- 사용할 리소스 번들 설정 (리소스번들명_로케일.properties) 
