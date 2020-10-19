@@ -10,6 +10,8 @@
 <script src = "${pageContext.request.contextPath }/js/jquery-3.5.1.min.js"></script>
 <script>
 	$(function(){
+		// 방법1.
+		$('#selectlang').val("${param.lang == null? 'ko' : param.lang }");
 		$('#selectlang').change(function(){
 
 			a = $('#selectlang option:selected').val();
@@ -52,22 +54,7 @@
 <%-- 		<option value ="${pageContext.request.contextPath }/jstl/jstl_fmt.jsp?lang=en">en</option>		 --%>
 <!-- 	</select> -->
 	
-	<%
-// 		String koParam = "";
-// 		String enParam = "";
-// 		String jaParam ="";
-		
-// 		if(a.equals("ko")){
-// 			koParam = "selected";					
-// 		}else if(a.equals("en")){
-// 			enParam = "selected";			
-// 		}else if(a.equals("ja")){
-// 			jaParam = "selected";			
-// 		}
-	
-	%>
 
-	
 	
 	
 	<!-- locale 정보를 변경 -->
@@ -76,25 +63,28 @@
 <%-- 	<fmt:setLocale value="${param.lang }"/> --%>
 	<fmt:setLocale value="${param.lang == null? 'ko' : param.lang }"/>
 	
-	<% 
-		String koparam = "";
-		String japaram ="";
-		String enparam = "";
-		if(request.getParameter("lang") != null){
-			if (request.getParameter("lang").equals("ko")){
-				koparam ="selected";
-			}else if(request.getParameter("lang").equals("ja")){
-				japaram ="selected";
-			}else if(request.getParameter("lang").equals("en")){
-				enparam ="selected";
-			}
-		}
+<%-- // 방법2	
+ 		String koparam = "";
+ 		String japaram ="";
+ 		String enparam = "";
+ 		if(request.getParameter("lang") != null){
+ 			if (request.getParameter("lang").equals("ko")){
+ 				koparam ="selected";
+ 			}else if(request.getParameter("lang").equals("ja")){
+ 				japaram ="selected";
+ 			}else if(request.getParameter("lang").equals("en")){
+ 				enparam ="selected";
+ 			}
+ 		}
 		
-	%>
+--%>
 	<select id = "selectlang" >
-		<option value ="ko" <%=koparam %>>ko</option>
-		<option value ="ja" <%=japaram %>>ja</option>
-		<option value ="en" <%=enparam %>>en</option>		
+<%-- 		<option value ="ko" <%=koparam %>>ko</option> --%>
+<%-- 		<option value ="ja" <%=japaram %>>ja</option> --%>
+<%-- 		<option value ="en" <%=enparam %>>en</option>		 --%>
+		<option value ="ko">ko</option>
+		<option value ="ja" >ja</option>
+		<option value ="en" >en</option>		
 	</select>
 	
 	
