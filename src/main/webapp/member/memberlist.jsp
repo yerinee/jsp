@@ -6,6 +6,7 @@
     pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"  %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -66,7 +67,9 @@
 								<td>${member.userId }</td> 
 								<td>${member.usernm }</td>
 								<td>${member.alias }</td>
-								<td>${member.reg_dt }</td>
+								
+								<td><fmt:formatDate value="${member.reg_dt }" pattern="yyyy-MM-dd"/></td>
+<%-- 								<td>${member.reg_dt }</td> --%>
 							</tr>
 						</c:forEach>
 					</table>
