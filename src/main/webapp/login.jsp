@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%-- <% Cookie[] cookies = request.getCookies(); --%>
-<!--  	for(Cookie cookie : cookies){ 		
- 				out.print(cookie.getName() + ": " + cookie.getValue() +"<br>");
- 			}-->
+<%--  Cookie[] cookies = request.getCookies(); --%>
+<%-- 	for(Cookie cookie : cookies){ 	 -->	
+ 				out.print(cookie.getName() + ": " + cookie.getValue() +"<br>"); 
+  			}--%>
+
 		
-<%-- %> --%>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24,13 +25,15 @@
     <link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="<%=request.getContextPath() %>/css/signin.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath }/css/signin.css" rel="stylesheet">
 
   </head>
   <script type = "text/javascript" src="<%=request.getContextPath() %>/js/js.cookie-2.2.1.min.js"></script>
-  <script src = "<%=request.getContextPath() %>/js/jquery-3.5.1.min.js"></script>
+	<script src = "${pageContext.request.contextPath }/js/jquery-3.5.1.min.js"></script>
+	
   
   <script>	
+  
 	// 1. REMEMBERME 쿠키 값이 Y로 설정 되어있는지 확인
 	// 2. 1번 조건 충족시
 	// 	 2-1 Remember Me 체크박스를 체크 상태로 변경
@@ -47,7 +50,7 @@
 	// 5. Remember Me 체크박스가 체크되어 있으면 
 	//		6. REMEMBERME, USERNM 쿠키를 삭제
 
-  
+	
 	$(function(){
 		
 		$('#button').on('click',function(){

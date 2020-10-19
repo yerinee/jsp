@@ -53,6 +53,16 @@
   
   
   
+  <!-- filter 등록 -->
+<!--   <filter> -->
+<!--   		<filter-name>RequestCounterFilter</filter-name>	   -->
+<!--   		<filter-class>kr.or.ddit.filter.RequestCounterFilter</filter-class> -->
+<!--   </filter> -->
+<!--   <filter-mapping> -->
+<!--   		<filter-name>RequestCounterFilter</filter-name> -->
+<!--   		<url-pattern>/*</url-pattern> 모든 요청에 대해서 필터를 처리한다. -->
+<!--   </filter-mapping> -->
+  
   
   
   <!-- 에러페이지 설정_ 에러처리 코드의 위치보다는 에러타입에 우선권을 가지고 있는것 같다 -->
