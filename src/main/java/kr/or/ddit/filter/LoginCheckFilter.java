@@ -20,7 +20,7 @@ import org.slf4j.LoggerFactory;
 import kr.or.ddit.member.model.MemberVO;
 
 
-@WebFilter("/*")
+//@WebFilter("/*")
 public class LoginCheckFilter implements Filter {
 
 	private static final Logger logger = LoggerFactory.getLogger(LoginCheckFilter.class);
