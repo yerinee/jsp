@@ -31,7 +31,7 @@
 	
 	memberVo : ${memberVo }<br><br>
 	
-	<h3>set태그를 통해 scope 객체에 저장된 vo객체의 필드를 수정(setter) <h3></h3>
+	<h3>set태그를 통해 scope 객체에 저장된 vo객체의 필드를 수정(setter) </h3>
 	
 	<c:set target ="${memberVo }" property="userId" value ="sally"></c:set>
 	
