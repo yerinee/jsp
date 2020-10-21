@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container-fluid">
 	
@@ -22,10 +22,10 @@
 <%-- 				<c:if test= "${S_MEMBER != null} "> --%>
 <%-- 					[${S_MEMBER.userId}] --%>
 <%-- 				</c:if> --%>
-			<c:choose>
-				<c:when test="${S_MEMBER != null}">[${S_MEMBER.userId}]</c:when>			
-		
-			</c:choose>
+				<c:choose>
+					<c:when test="${S_MEMBER != null}">[${S_MEMBER.userId}]</c:when>			
+			
+				</c:choose>
 <%-- 			<a class="navbar-brand" href="#">JSP/SPRING [${S_MEMBER.userId}]</a> --%>
 			</a>
 		

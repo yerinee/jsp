@@ -20,13 +20,26 @@
 <link rel="icon" href="../../favicon.ico">
 
 <title>Jsp</title>
-<script>
-// 	var s = document.getElementById("lines");
-// 	var line = s.options[s.selectedIndex].value;
-	
-</script>
 
 <%@include file ="/layout/commonLib.jsp" %>
+
+<script>
+ $(document).ready(function(){
+		$('#memberlist tr').on('click', function(){
+
+// 			console.log("memberlist tr click");
+			// data-userid --> data의 속성 이름  data의 값을 가져오기위해 사용하는 함수 data()
+			var userid = $(this).data("userid")
+			console.log("userid : " + userid);
+
+			document.location ="/member?userid=" + userid;
+			
+
+		})
+
+ })
+</script>
+
 </head>
 
 <body>
@@ -62,16 +75,20 @@
 								
 		<!-- 					</tr> -->
 		<%-- 				<%} %> --%>
-						<c:forEach items="${memberList }" var="member">
-							<tr>	
-								<td>${member.userId }</td> 
-								<td>${member.usernm }</td>
-								<td>${member.alias }</td>
+		
+						<tbody id = "memberlist"> <!-- tr태그를 전부 보내지 않고 tbody안에있는 내용만 나릴때 주로 사용 -->
+							<c:forEach items="${memberList }" var="member">
+								<tr data-userid="${member.userId }">	<!-- data는 userId의 값을 잠깐 저장을 해둘수 있다. -->
 								
-								<td><fmt:formatDate value="${member.reg_dt }" pattern="yyyy-MM-dd"/></td>
-<%-- 								<td>${member.reg_dt }</td> --%>
-							</tr>
-						</c:forEach>
+									<td>${member.userId }</td> 
+									<td>${member.usernm }</td>
+									<td>${member.alias }</td>
+									
+									<td><fmt:formatDate value="${member.reg_dt }" pattern="yyyy-MM-dd"/></td>
+	<%-- 								<td>${member.reg_dt }</td> --%>
+								</tr>
+							</c:forEach>
+						</tbody>
 					</table>
 				</div>
 				
