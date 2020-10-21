@@ -36,13 +36,11 @@
 				<li><a href="#">Settings</a></li>
 				<li><a href="#">Profile</a></li>
 				<li><a href="#">Help</a></li>
-				<%
-					if(memberVo != null){
-				%>
-					<li><a href="${cd}/LogoutServlet">로그아웃</a></li>			
-				<%		
-					}
-				%>
+				
+				<c:if test ="${S_MEMBER != null }">
+					<li><a href="${cd}/LogoutServlet">로그아웃</a></li>								
+				</c:if>
+
 			</ul>
 			<form class="navbar-form navbar-right">
 				<input type="text" class="form-control" placeholder="Search...">
