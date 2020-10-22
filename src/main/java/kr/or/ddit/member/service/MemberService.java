@@ -66,6 +66,23 @@ public class MemberService implements MemberServiceI {
 		return map;
 	}
 
+	@Override
+	public int inserMember(MemberVO memberVo) {
+		
+		return memberDao.inserMember(memberVo);
+	}
+
+	@Override
+	public int deleteMember(String userid) {
+		return 0;
+	}
+
+	@Override
+	public int updateMember(MemberVO memberVo) {
+		
+		return memberDao.updateMember(memberVo);
+	}
+
 	
 	
 	

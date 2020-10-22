@@ -6,7 +6,7 @@
   <select id="getMember" resultType="MemberVo" parameterType="String">
     SELECT * 
     FROM users 
-    WHERE userid = #{userId}
+    WHERE userid = #{userid}
   </select>
   
    <select id="selectAllMember" resultType="MemberVo" >
@@ -46,6 +46,51 @@
   	from users
   </select>
   
-  
+ <insert id="insertMember" parameterType="MemberVo">
+ 	INSERT INTO users VALUES(#{userid}, #{usernm}, #{pass}, SYSDATE, 
+ 							 #{alias} , #{addr1}, #{addr2}, #{zipcode}, 
+ 							 #{filename}, #{realfilename})
+ 
+ </insert> 
+ 
+ <delete id="deleteMember">
+ 	DELETE users WHERE userid = #{userid}
+ </delete>
+ 
+ <update id="updateMember" parameterType="MemberVo" >
+	UPDATE users
+ 	<set>
+        <if test="usernm != null">usernm=#{usernm},</if>
+        <if test="alias != null">alias=#{alias},</if>
+        <if test="addr1 != null">addr1=#{addr1},</if>
+        <if test="addr2 != null">addr2=#{addr2},</if>
+        <if test="pass != null">pass=#{pass},</if>
+        <if test="zipcode != null">zipcode=#{zipcode},</if>
+        <if test="realfilename != null">realfilename=#{realfilename},</if>
+        <if test="filename != null">filename=#{filename}</if>
+    </set>											
+	WHERE userid =#{userid}
+ </update>
+ 
+ 
+<!--  UPDATE users SET usernm = #{usernm}, alias=#{alias}, addr1=#{addr1},	 -->
+<!--  							addr2=#{addr2}, zipcode=#{zipcode}, pass=#{pass}, -->
+<!--  							filename=#{filename} , realfilename=#{realfilename}  -->
+
+ <update id="update" parameterType="map">
+    update PROJECTS
+    <set>
+        <if test="title != null">PNAME=#{title},</if>
+        <if test="content != null">CONTENT=#{content},</if>
+        <if test="startDate != null">STA_DATE=#{startDate},</if>
+        <if test="endDate != null">END_DATE=#{endDate},</if>
+        <if test="state != null">STATE=#{state},</if>
+        <if test="tags != null">TAGS=#{tags},</if>
+    </set>
+    where PNO = #{no}
+</update>
+ 
+ 
+ 
   
 </mapper>
