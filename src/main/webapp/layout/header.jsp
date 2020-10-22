@@ -23,7 +23,7 @@
 <%-- 					[${S_MEMBER.userId}] --%>
 <%-- 				</c:if> --%>
 				<c:choose>
-					<c:when test="${S_MEMBER != null}">[${S_MEMBER.userId}]</c:when>			
+					<c:when test="${S_MEMBER != null}">[${S_MEMBER.userid}]</c:when>			
 			
 				</c:choose>
 <%-- 			<a class="navbar-brand" href="#">JSP/SPRING [${S_MEMBER.userId}]</a> --%>

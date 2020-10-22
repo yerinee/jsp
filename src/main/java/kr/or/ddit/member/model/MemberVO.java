@@ -3,7 +3,7 @@ package kr.or.ddit.member.model;
 import java.util.Date;
 
 public class MemberVO {
-	private String userId;
+	private String userid;
 	private String pass;
 	private String usernm;
 	private String alias;
@@ -14,74 +14,138 @@ public class MemberVO {
 	private String filename;
 	private String realfilename;
 	
-	public String getUserId() {
-		return userId;
+	
+	// 생성자가 존재시에는 기본생성자가 따로 생성되지 않기때문에 기본생성자를 만들어줘야한다.
+	public MemberVO() {
+		
 	}
-	public void setUserId(String userId) {
-		this.userId = userId;
+	
+	
+
+	public MemberVO(String userid, String pass, String usernm, String alias, String addr1, String addr2, String zipcode,
+			String filename, String realfilename) {
+		super();
+		this.userid = userid;
+		this.pass = pass;
+		this.usernm = usernm;
+		this.alias = alias;
+		this.addr1 = addr1;
+		this.addr2 = addr2;
+		this.zipcode = zipcode;
+		this.filename = filename;
+		this.realfilename = realfilename;
 	}
+
+
+
+	public String getUserid() {
+		return userid;
+	}
+
+
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+
+
 	public String getPass() {
 		return pass;
 	}
+
+
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
+
+
 	public String getUsernm() {
 		return usernm;
 	}
+
+
 	public void setUsernm(String usernm) {
 		this.usernm = usernm;
 	}
+
+
 	public String getAlias() {
 		return alias;
 	}
+
+
 	public void setAlias(String alias) {
 		this.alias = alias;
 	}
+
+
 	public Date getReg_dt() {
 		return reg_dt;
 	}
+
+
 	public void setReg_dt(Date reg_dt) {
 		this.reg_dt = reg_dt;
 	}
+
+
 	public String getAddr1() {
 		return addr1;
 	}
+
+
 	public void setAddr1(String addr1) {
 		this.addr1 = addr1;
 	}
+
+
 	public String getAddr2() {
 		return addr2;
 	}
+
+
 	public void setAddr2(String addr2) {
 		this.addr2 = addr2;
 	}
+
+
 	public String getZipcode() {
 		return zipcode;
 	}
+
+
 	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
 	}
-	
-	
+
+
 	public String getFilename() {
 		return filename;
 	}
+
+
 	public void setFilename(String filename) {
 		this.filename = filename;
 	}
+
+
 	public String getRealfilename() {
 		return realfilename;
 	}
+
+
 	public void setRealfilename(String realfilename) {
 		this.realfilename = realfilename;
 	}
+
+
 	@Override
 	public String toString() {
-		return "MemberVO [userId=" + userId + ", pass=" + pass + ", usernm=" + usernm + ", alias=" + alias + ", reg_dt="
+		return "MemberVO [userid=" + userid + ", pass=" + pass + ", usernm=" + usernm + ", alias=" + alias + ", reg_dt="
 				+ reg_dt + ", addr1=" + addr1 + ", addr2=" + addr2 + ", zipcode=" + zipcode + ", filename=" + filename
 				+ ", realfilename=" + realfilename + "]";
 	}
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -93,11 +157,13 @@ public class MemberVO {
 		result = prime * result + ((pass == null) ? 0 : pass.hashCode());
 		result = prime * result + ((realfilename == null) ? 0 : realfilename.hashCode());
 		result = prime * result + ((reg_dt == null) ? 0 : reg_dt.hashCode());
-		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+		result = prime * result + ((userid == null) ? 0 : userid.hashCode());
 		result = prime * result + ((usernm == null) ? 0 : usernm.hashCode());
 		result = prime * result + ((zipcode == null) ? 0 : zipcode.hashCode());
 		return result;
 	}
+
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -142,10 +208,10 @@ public class MemberVO {
 				return false;
 		} else if (!reg_dt.equals(other.reg_dt))
 			return false;
-		if (userId == null) {
-			if (other.userId != null)
+		if (userid == null) {
+			if (other.userid != null)
 				return false;
-		} else if (!userId.equals(other.userId))
+		} else if (!userid.equals(other.userid))
 			return false;
 		if (usernm == null) {
 			if (other.usernm != null)
@@ -159,7 +225,6 @@ public class MemberVO {
 			return false;
 		return true;
 	}
-	
 	
 	
 	

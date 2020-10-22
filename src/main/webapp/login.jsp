@@ -136,7 +136,7 @@
       <form class="form-signin" action="${pageContext.request.contextPath }/login" method="post">
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" name = "userId" class="form-control" placeholder="Email address" required autofocus value ="brown">
+        <input type="email" id="inputEmail" name = "userid" class="form-control" placeholder="Email address" required autofocus value ="brown">
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" id="inputPassword" class="form-control" placeholder="Password" name ="password" required value = "brownPass">
         <div class="checkbox">

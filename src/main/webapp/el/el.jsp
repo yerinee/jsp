@@ -51,13 +51,13 @@
 	scope parameter : ${param.scope } <br>
 	
 	cookie : <%=request.getCookies() %> <br>
-	cookie : ${cookie.userId.value } <br>
+	cookie : ${cookie.userid.value } <br>
 	
 	rangers.brown : ${rangers.brown } <br>
 	rangers.sally : ${rangers.sally } <br>
 	
 	list[인덱스] => MemberVO, list[인덱스].필드 <br>
-	rangersList[0].userId : ${rangersList[0].userId } <br>
+	rangersList[0].userid : ${rangersList[0].userid } <br>
 	rangersList[1] : ${rangersList[1] } <br>
 	
 	

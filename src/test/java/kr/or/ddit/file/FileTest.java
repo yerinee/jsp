@@ -5,7 +5,11 @@ package kr.or.ddit.file;
 
 import static org.junit.Assert.*;
 
+import java.util.UUID;
+
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import kr.or.ddit.fileupload.FileUpdloadUtil;
 
@@ -26,7 +30,7 @@ import kr.or.ddit.fileupload.FileUpdloadUtil;
 * </pre>
 */
 public class FileTest {
-
+	private static final Logger logger = LoggerFactory.getLogger(FileTest.class);
 	@Test
 	public void getFileTest() {
 		/***Given***/
@@ -37,6 +41,30 @@ public class FileTest {
 		
 		/***Then***/
 		assertEquals("AA.19067065.1.jpg",fileName);
+	}
+	
+	@Test
+	public void UUIDTest() {
+		/***Given***/
+
+		/***When***/
+		String uuid = UUID.randomUUID().toString();
+		logger.debug("uuid : {} " , uuid);
+		
+		/***Then***/
+	}
+	
+	@Test
+	public void fileNameTest() {
+		
+		/***Given***/
+		String fileName = "2019.png";
+
+		/***When***/
+		String extension = FileUpdloadUtil.getExtenstion(fileName);
+		
+		/***Then***/
+		assertEquals("png",extension);
 	}
 
 }

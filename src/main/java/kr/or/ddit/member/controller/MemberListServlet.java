@@ -51,4 +51,5 @@ public class MemberListServlet extends HttpServlet {
 		
 		request.getRequestDispatcher("/member/memberlist.jsp").forward(request, response);
 	}	
+
 }

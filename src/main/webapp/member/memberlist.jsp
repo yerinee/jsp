@@ -78,9 +78,9 @@
 		
 						<tbody id = "memberlist"> <!-- tr태그를 전부 보내지 않고 tbody안에있는 내용만 나릴때 주로 사용 -->
 							<c:forEach items="${memberList }" var="member">
-								<tr data-userid="${member.userId }">	<!-- data는 userId의 값을 잠깐 저장을 해둘수 있다. -->
+								<tr data-userid="${member.userid }">	<!-- data는 userId의 값을 잠깐 저장을 해둘수 있다. -->
 								
-									<td>${member.userId }</td> 
+									<td>${member.userid }</td> 
 									<td>${member.usernm }</td>
 									<td>${member.alias }</td>
 									
@@ -92,7 +92,7 @@
 					</table>
 				</div>
 				
-				<a class="btn btn-default pull-right">사용자 등록</a>
+				<a href="${cp }/memberRegist" class="btn btn-default pull-right">사용자 등록</a>
 				page : ${page }
 				pages : ${pages }
 				pageSize : ${pageSize }

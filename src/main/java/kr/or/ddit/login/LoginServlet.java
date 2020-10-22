@@ -45,11 +45,11 @@ public class LoginServlet extends HttpServlet {
    
 	// Login 화면에서 사용자가 보낸 아이디 비밀번호를 사용하여 로그인 처리
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userId = request.getParameter("userId");
+		String userid = request.getParameter("userid");
 		String password = request.getParameter("password");
 		
 		
-		MemberVO membervo = memberservice.getMember(userId);
+		MemberVO membervo = memberservice.getMember(userid);
 		
 		// 디비에 등록된 회원이 없거나, 비밀번호가 틀린경우 (로그인 페이지)
 		if(membervo == null || !membervo.getPass().equals(password)) {
@@ -60,7 +60,7 @@ public class LoginServlet extends HttpServlet {
 			request.getRequestDispatcher("/main.jsp").forward(request, response); 
 		}
 		
-		logger.debug("userId : {}, password : {}", userId, password);
+		logger.debug("userId : {}, password : {}", userid, password);
 		
 		// 쿠키정보
 		Cookie[] cookies = request.getCookies();

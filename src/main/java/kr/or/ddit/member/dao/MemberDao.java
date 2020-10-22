@@ -67,4 +67,54 @@ public class MemberDao implements MemberDaoI{
 		return sqlSession.selectList("member.selectAllMemberPage", pagevo);
 	}
 
+	@Override
+	public int inserMember(MemberVO memberVo) {
+		
+		SqlSession sqlSession = MybatisUtil.getSqlSession();
+		int insertCnt = 0;
+		try {
+			insertCnt = sqlSession.insert("member.insertMember", memberVo);			
+		}catch (Exception e) {
+			
+		}
+		
+		// 변경이 발생된 트랜잭션은 명시적으로 끝내주어야한다.
+		if(insertCnt == 1) { // 정상적으로 insert가 되었으면 commit
+			sqlSession.commit();
+		}else { // insert가 되지 않았으면 rollback
+			sqlSession.rollback();
+		}
+		
+		sqlSession.close();
+		
+		return insertCnt;
+	}
+
+	@Override
+	public int deleteMember(String userid) {
+		SqlSession sqlSession = MybatisUtil.getSqlSession();
+		int deleteCnt = sqlSession.delete("member.deleteMember", userid);
+		if(deleteCnt == 1) {
+			sqlSession.commit();
+		}else {
+			sqlSession.rollback();
+		}
+		sqlSession.close();
+		return deleteCnt;
+	}
+
+	@Override
+	public int updateMember(MemberVO memberVo) {
+		SqlSession sqlSession = MybatisUtil.getSqlSession();
+		int updateCnt = sqlSession.update("member.updateMember", memberVo);
+		System.out.println("updateCnt :: " + updateCnt);
+		if(updateCnt == 1) {
+			sqlSession.commit();
+		}else {
+			sqlSession.rollback();
+		}
+		sqlSession.close();
+		return updateCnt;
+	}
+
 }

@@ -17,6 +17,21 @@
 <title>Jsp</title>
 
 <%@include file ="/layout/commonLib.jsp" %>
+
+<script>
+$(document).ready(function(){
+
+	
+	
+	$('#editbtn').on('click', function(){
+
+		a = $('#userId').text()
+		console.log(a);
+		
+	})
+});
+
+</script>
 </head>
 
 <body>
@@ -43,7 +58,7 @@
 						<div class="col-sm-10">
 <%-- 							<img src="${cp }/profile/${memberVo.filename}"/> --%>
 							
-							<img src="${cp }/profileImg?userid=${memberVo.userId}"/>
+							<img src="${cp }/profileImg?userid=${memberVo.userid}"/>
 							
 						</div>
 					</div>
@@ -51,7 +66,7 @@
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">사용자 아이디</label>
 						<div class="col-sm-10">
-							<label class="control-label">${memberVo.userId }</label>
+							<label id ="userId" class="control-label">${memberVo.userid }</label>
 						</div>
 					</div>
 
@@ -106,7 +121,8 @@
 
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
-							<button type="submit" class="btn btn-default">정보수정</button>
+						
+							<a href = "${cp}/memberUpdate?userid=${memberVo.userid}"><input id ="editbtn" type="button" class="btn btn-default" value ="정보수정"/></a>
 						</div>
 					</div>
 				</form>

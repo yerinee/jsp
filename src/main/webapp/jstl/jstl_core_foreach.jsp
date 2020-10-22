@@ -88,7 +88,7 @@
 		<%for(MemberVO member : (List<MemberVO>)request.getAttribute("memberList")) {%>
 			<tr>	
 <%-- 				<td><%=memberlist2.get(i).getUserId() %></td>  --%>
-				<td><%=member.getUserId() %></td> 
+				<td><%=member.getUserid() %></td> 
 <%-- 				<td><%=memberlist2.get(i).getPass() %></td> --%>
 				<td><%=member.getPass() %></td>
 			</tr>
@@ -104,7 +104,7 @@
 			
 		<%for(int i=0; i<memberlist2.size();i++){ %>
 			<tr>	
-				<td><%=memberlist2.get(i).getUserId() %></td> 
+				<td><%=memberlist2.get(i).getUserid() %></td> 
 				<td><%=memberlist2.get(i).getPass() %></td>
 			</tr>
 		<%} %>

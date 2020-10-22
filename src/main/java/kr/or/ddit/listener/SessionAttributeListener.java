@@ -30,9 +30,9 @@ public class SessionAttributeListener implements HttpSessionAttributeListener{
 			
 			// 위의 두줄을 아래 한줄로 표현할 수 있다.
 			MemberVO memberVo = (MemberVO)event.getValue();
-			logger.debug("사용자 로그인 : {} " , memberVo.getUserId());
+			logger.debug("사용자 로그인 : {} " , memberVo.getUserid());
 			
-			userMap.put(memberVo.getUserId(), memberVo);
+			userMap.put(memberVo.getUserid(), memberVo);
 			
 			ServletContext sc = event.getSession().getServletContext();
 			
@@ -47,7 +47,7 @@ public class SessionAttributeListener implements HttpSessionAttributeListener{
 		if("S_MEMBER".equals(event.getName())) {
 			
 			MemberVO memberVo = (MemberVO)event.getValue();
-			userMap.remove(memberVo.getUserId());
+			userMap.remove(memberVo.getUserid());
 		}
 	}
 
