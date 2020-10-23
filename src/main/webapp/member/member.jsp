@@ -21,14 +21,17 @@
 <script>
 $(document).ready(function(){
 
-	
-	
-	$('#editbtn').on('click', function(){
 
+	$('#editbtn').on('click', function(){
 		a = $('#userId').text()
-		console.log(a);
-		
+		console.log(a);		
+		//document.location="/memberUpdate?userid=${memberVo.userid}"
 	})
+
+	$('#profileDownBtn').on('click', function(){
+		document.location="/profileDownload?userid=${memberVo.userid}"
+	})
+	
 });
 
 </script>
@@ -58,8 +61,8 @@ $(document).ready(function(){
 						<div class="col-sm-10">
 <%-- 							<img src="${cp }/profile/${memberVo.filename}"/> --%>
 							
-							<img src="${cp }/profileImg?userid=${memberVo.userid}"/>
-							
+							<img src="${cp }/profileImg?userid=${memberVo.userid}"/><br>
+							<input id ="profileDownBtn" type="button" class="btn btn-default" value ="다운로드 ${memberVo.realfilename }"/>
 						</div>
 					</div>
 					
