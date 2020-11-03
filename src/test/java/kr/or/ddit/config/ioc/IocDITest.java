@@ -57,6 +57,7 @@ public class IocDITest {
 
 		/***Then***/
 		assertEquals(30, person.getAge());
+//		assertEquals("2020-11-03", person.getBirthdate());
 		assertEquals("내용", person.getBoardRepository().getBoard(1).getContent());
 		
 	}
