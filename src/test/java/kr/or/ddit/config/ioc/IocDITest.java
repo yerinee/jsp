@@ -35,6 +35,7 @@ public class IocDITest {
 	
 	// 스프링 빈을 직접 주입을 받을 수도있다.
 	// 내가 주입을 받고싶은 리소스 이름을 쓰면된다. ==> 스프링 컨테이너안에 등록이 되어있을때 사용할 수 있다.
+	// 스프링 컨테이너가 관리해야 사용할수 있다.
 	// 서블릿은 톰캣이 관리하기때문에 서블릿내에서 사용할 수 없다.
 	@Resource(name = "boardService")
 	BoardService boardService;
