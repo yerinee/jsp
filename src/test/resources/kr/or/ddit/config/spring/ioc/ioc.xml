@@ -13,6 +13,7 @@
 	      
 	      property : class의 필드(속성) -> 스프링컨테이너가 해당 필드의 setter메소드를 이용하여 
 	      								스프링 빈을 주입-->
+	 
 	      								
 	 <!-- 1. boardDao라는 이름으로 BoardDao 클래스를 이용하여 스프링 빈 생성 
 	 	  2. boardService라는 이름으로 boardService 클래스를 이용하여 스프링 빈 생성
@@ -24,14 +25,16 @@
  	<!-- boardService가 의존하는 boardDao 스프링빈을 setter 메소드를 통해 주입(Dependency Injection) 
  	 setter와 생성자 두가지가 있다.(생성자 <constructor-arg></constructor-arg>) -->
 	 
-	<!-- 기본생성자 사용 -->
+	<!-- 1. setter 이용
+			 기본생성자 사용 -->
 	 <bean id = "boardService" class="kr.or.ddit.board.service.BoardService">
 		<!-- property를 쓰면 해당 클래스의 setter 메소드 호출 어떤 필드인시 명시를 해줘야해서 name을 쓴다. -->
 	 	<property name="boardRepository" ref="boardRepository"/>	 
 	 </bean>
 	 
 	 
-	<!-- BoardRepositoryI를 인자로 받는 생성자 사용 -->
+	<!--  2. 생성자 
+			BoardRepositoryI를 인자로 받는 생성자 사용 -->
 	 <bean id = "boardServiceC" class="kr.or.ddit.board.service.BoardService">
 	 	<constructor-arg ref="boardRepository"></constructor-arg>
 	 </bean>
@@ -83,5 +86,22 @@
 				private Date birthdate;
 	 		formatting conversion service -->
 	 <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean"></bean>
+	 
+	 
+	 
+<!-- 	 <bean id = "memberRepository" class="kr.or.ddit.member.dao.MemberDao"/> -->
+	 
+	 
+ 	<!-- boardService가 의존하는 boardDao 스프링빈을 setter 메소드를 통해 주입(Dependency Injection) 
+ 	 setter와 생성자 두가지가 있다.(생성자 <constructor-arg></constructor-arg>) -->
+	 
+	<!-- 기본생성자 사용 -->
+<!-- 	 <bean id = "memberService" class="kr.or.ddit.member.service.MemberService"> -->
+		<!-- property를 쓰면 해당 클래스의 setter 메소드 호출 어떤 필드인시 명시를 해줘야해서 name을 쓴다. -->
+<!-- 		<constructor-arg ref="memberRepository"></constructor-arg> -->
+<!-- 	 	<property name="memberDao" ref="memberDao"/>	  -->
+<!-- 	 </bean> -->
+	 
+	 
 	 
 </beans>

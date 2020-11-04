@@ -17,10 +17,12 @@ public class BoardService implements BoardServiceI {
 	
 	private BoardRepositoryI boardRepository;
 	
+	// get
 	public BoardRepositoryI getBoardRepository() {
 		return boardRepository;
 	}
 	
+	// set
 	public void setBoardRepository(BoardRepositoryI boardRepository) {
 		this.boardRepository = boardRepository;
 	}
