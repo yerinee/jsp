@@ -34,7 +34,8 @@
 	<!-- @Controller, @RequestMapping, 
 		HandlerMapping, HandlerAdapter, validation,
 		formatting conversion service 등 
-		spring mvc 패턴에 필요한 어노테이션, 엘레먼트 처리 -->	
+		spring mvc 패턴에 필요한 어노테이션, 엘레먼트 처리 
+		위의 어노테이션을 사용할시 아래 코드를 작성해주어야한다. -->	
 	<mvc:annotation-driven/>
 	
 	

@@ -56,13 +56,13 @@ public class LoginController {
 	
 	// 파라미터 이름과 동일한 이름의 메소드 인자를 선언하면
 	// 스프링 프레임워크가 자동으로 바인딩 해준다.
-	// 값을 담을 수 있는 객체를 메소드 인자로 선언한 경우에도 필드명과 파라미터 명이
+	// 값을 담을 수 있는 객체를 메소드 인자로 선언한 경우에도 필드명과 파라미터명이
 	// 동일하면 자동으로 바인딩 처리를 해준다.
 	// 이때 값을 담는 객체를 스프링 프레임워크에서는 command객체라고 명명한다. --> form 전송을 통해 담을수있는 객체 (command객체)
 	
 	// Model : view객체에서 응답을 생성할 때 참조할 데이터를 담는 객체
 	// 		   jsp/servlet 기반의 request 역할을 담당
-	@RequestMapping(path = "/process", params={"userid"})
+	@RequestMapping(path = "/process")
 	public String process(String userid, String pass, MemberVO memberVo, 
 							HttpSession session, Model model,
 							@RequestParam(name="email", 

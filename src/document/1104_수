@@ -91,7 +91,7 @@ consume - Content-type , produce - Accept 헤더 : ajax 수업시 다시########
 /notice/sk
 			
 @RequestMapping("/notice/{library}")
-	public String notice(@PathVarialbe("library") String libarary) {
+	public String notice(@PathVarialbe("library") String library) {
 	}			 
  
  스프링 컨트롤러의 리턴 타입

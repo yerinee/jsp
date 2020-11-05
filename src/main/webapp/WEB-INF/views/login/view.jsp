@@ -1,11 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%--  Cookie[] cookies = request.getCookies(); --%>
-<%-- 	for(Cookie cookie : cookies){ 	 -->	
- 				out.print(cookie.getName() + ": " + cookie.getValue() +"<br>"); 
-  			}--%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 		
 
 <!DOCTYPE html>
@@ -128,8 +124,11 @@
   </script>
 
   <body>
-
-
+	msg : ${msg }<br>
+	msg_s : ${msg_s } <br>
+	<c:remove var="msg_s" scope="session"/>
+	
+	msg_ra : ${msg_ra }
 
     <div class="container">
 
