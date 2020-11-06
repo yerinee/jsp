@@ -5,7 +5,8 @@
 <configuration>
 	<typeAliases>
 	
-		<typeAlias type="kr.or.ddit.member.model.MemberVO" alias="MemberVo"/>			
+		<typeAlias type="kr.or.ddit.member.model.MemberVO" alias="MemberVo"/>	
+		<typeAlias type="kr.or.ddit.member.model.PageVO" alias="pageVo"/>			
 		
 	</typeAliases>
 

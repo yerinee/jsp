@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
 @RequestMapping("/fileupload")
-//@Controller
+@Controller
 public class FileUploadController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(FileUploadController.class);
