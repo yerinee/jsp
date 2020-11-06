@@ -17,6 +17,18 @@
 		<context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
 	</context:component-scan>
 	
+	
+	<bean id ="profileImgView" class="kr.or.ddit.mvc.view.ProfileImgView"/>
+	<bean id ="profileDownloadView" class="kr.or.ddit.mvc.view.ProfileDownloadView"/>
+	
+	<bean id ="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
+	
+	<!-- 우선순위 1. BeanName이랑 동일한 애가 있으면 bean으로 쓰겠다.-->
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+	 	 <!-- 우선순위가 높은 것먼저 실행하기때문에 value가 0인 것 먼저실행한다. -->
+		<property name="order" value="0"/>
+	</bean>
+	
 	<bean class ="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<!-- prefix : 접두어, suffix : 접미어
 			 Contoller가 리턴하는 문자열에 prefix, suffix를 적용하여 
@@ -30,6 +42,8 @@
 			 
 			 즉, /WEB-INF/views/ 디렉토리 안에 있는 뷰의 파일이라는것을 알려주는 것이다.
 		  -->
+		  <!-- 우선순위가 높은 것먼저 실행하기때문에 value가 작은것 먼저실행한다. -->
+		<property name="order" value="1"/>
 		<property name="prefix" value="/WEB-INF/views/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
@@ -46,6 +60,10 @@
 	<mvc:default-servlet-handler/>
 	
 	
+	<!-- 파일 업로드 처리를 위한 multipartResolver 설정 -->
+	<bean id ="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
+	
+	
 	
 	<!-- 정적자원 매핑 처리
 		1. url 단축을 목적
@@ -55,7 +73,9 @@
 	<mvc:resources mapping="/resources/**" location="/WEB-INF/views/error/"></mvc:resources>
 	
 	
-	<!-- 파일 업로드 처리를 위한 multipartResolver 설정 -->
-	<bean id ="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
+	
+
+	
+	
 	
 </beans>

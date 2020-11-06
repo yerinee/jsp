@@ -29,7 +29,7 @@ $(document).ready(function(){
 	})
 
 	$('#profileDownBtn').on('click', function(){
-		document.location="${cp}/member/profileDownload?userid=${memberVo.userid}"
+		document.location="${cp}/profileDownload?userid=${memberVo.userid}"
 	})
 	
 });
@@ -61,7 +61,7 @@ $(document).ready(function(){
 						<div class="col-sm-10">
 <%-- 							<img src="${cp }/profile/${memberVo.filename}"/> --%>
 							
-							<img src="${cp }/member/profileImg?userid=${memberVo.userid}"/><br>
+							<img src="${cp }/profileImg?userid=${memberVo.userid}"/><br>
 							<input id ="profileDownBtn" type="button" class="btn btn-default" value ="다운로드 ${memberVo.realfilename }"/>
 						</div>
 					</div>

@@ -102,7 +102,7 @@ function initData(){
 										  path="memberVO.usernm" 의 memberVO 는 MemberVO클래스에서
 										  앞글자만 소문자로 바꿔서 사용-->
 									<span style="color:red"><form:errors path="memberVO.usernm"/></span>
-<%-- 									<span style="color:red"><form:errors path="jSRMemberVO.usernm"/></span> --%>
+									<span style="color:red"><form:errors path="jSRMemberVO.usernm"/></span>
 						</div>
 					</div>
 					<div class="form-group">
