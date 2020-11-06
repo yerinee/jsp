@@ -15,4 +15,19 @@
 	
 	<!-- @Resouce등을 사용하는 annotation-config는 component-scan에도 포함되어있기 떄문에 따로 쓰지 않아도 사용가능하다. -->
 	<context:annotation-config/>
+	
+	
+	<!-- 
+		 messageSource등록 : bean id는 messageSource로 정해져있다. 
+		 번들메세지_언어코드_국가코드.properties ==> 번들메세지 
+	-->
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>classpath:kr/or/ddit/config/message/msg</value>
+			</list>
+		</property>
+	</bean>
+	
+	
 </beans>

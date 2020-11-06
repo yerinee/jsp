@@ -4,13 +4,15 @@ import java.util.Date;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-public class MemberVO {
+public class JSRMemberVO {
 	private String userid;
 	private String pass;
 	
 	// null 이면 안되고 , empty체크
 	@NotEmpty
 	private String usernm;
+	
+	
 	private String alias;
 	private Date reg_dt;
 	private String addr1;
@@ -21,13 +23,13 @@ public class MemberVO {
 	
 	
 	// 생성자가 존재시에는 기본생성자가 따로 생성되지 않기때문에 기본생성자를 만들어줘야한다.
-	public MemberVO() {
+	public JSRMemberVO() {
 		
 	}
 	
 	
 
-	public MemberVO(String userid, String pass, String usernm, String alias, String addr1, String addr2, String zipcode,
+	public JSRMemberVO(String userid, String pass, String usernm, String alias, String addr1, String addr2, String zipcode,
 			String filename, String realfilename) {
 		super();
 		this.userid = userid;
@@ -177,7 +179,7 @@ public class MemberVO {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		MemberVO other = (MemberVO) obj;
+		JSRMemberVO other = (JSRMemberVO) obj;
 		if (addr1 == null) {
 			if (other.addr1 != null)
 				return false;

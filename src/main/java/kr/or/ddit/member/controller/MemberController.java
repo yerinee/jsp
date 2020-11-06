@@ -14,11 +14,13 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -26,7 +28,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.or.ddit.fileupload.FileUpdloadUtil;
+import kr.or.ddit.member.model.JSRMemberVO;
 import kr.or.ddit.member.model.MemberVO;
+import kr.or.ddit.member.model.MemberVoValidator;
 import kr.or.ddit.member.model.PageVO;
 import kr.or.ddit.member.service.MemberService;
 import kr.or.ddit.member.service.MemberServiceI;
@@ -71,6 +75,8 @@ public class MemberController {
 	@RequestMapping(path ="/member", method = {RequestMethod.GET})
 	public String getMember(String userid, Model model,
 			 HttpServletRequest request, HttpServletResponse response) {
+		
+	
 		
 		MemberVO membervo = memberservice.getMember(userid);
 		model.addAttribute("memberVo", membervo);
@@ -147,12 +153,19 @@ public class MemberController {
 	
 	// 멤버 등록
 	@RequestMapping(path ="/memberInsert", method = {RequestMethod.POST})
-	public String memberInsert(MemberVO memberVo ,@RequestPart("realFilename")MultipartFile file) throws IOException, ServletException {		
+	public String memberInsert(@Valid MemberVO memberVo,BindingResult br ,@RequestPart("realFilename")MultipartFile file) throws IOException, ServletException {		
+//	public String memberInsert(@Valid JSRMemberVO memberVo,BindingResult br ,@RequestPart("realFilename")MultipartFile file) throws IOException, ServletException {		
+
+//		new MemberVoValidator().validate(memberVo, br);
 		
-		logger.debug("userid : {}", memberVo.getUserid());
-		logger.debug("name : {} / filename : {} / size : {}",
-						file.getName(), file.getOriginalFilename(), file.getSize());
 		
+		// memberVo에 에러가존재하면
+		// 검증을 통과하지 못했으므로 사용자 등록 화면으로 이동
+		if(br.hasErrors()) {
+			System.out.println("dadadfadfaf");
+			
+			return "member/memberRegist";
+		}
 		
 		String filepath ="";
 		if(file.getSize()>0) {

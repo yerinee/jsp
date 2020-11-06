@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,8 +50,8 @@
 // 문서로딩시 실행	
 function initData(){
 
-		$('#userid').val('nyr');
-		$('#usernm').val('예리니');
+		$('#userid').val('yerinee');
+		$('#usernm').val('예리닝');
 		$('#alias').val('rinee');
 		$('#pass').val('1234');
 		$('#addr1').val('대전 중구 중앙로 76');
@@ -97,6 +98,11 @@ function initData(){
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="usernm" name="usernm" 
 									placeholder="사용자 이름" value="${param.usernm }">	
+									<!-- 이 코드에 해당하는 에러메세지가 있으면 보여주고 없으면 넘어간다. 
+										  path="memberVO.usernm" 의 memberVO 는 MemberVO클래스에서
+										  앞글자만 소문자로 바꿔서 사용-->
+									<span style="color:red"><form:errors path="memberVO.usernm"/></span>
+<%-- 									<span style="color:red"><form:errors path="jSRMemberVO.usernm"/></span> --%>
 						</div>
 					</div>
 					<div class="form-group">
