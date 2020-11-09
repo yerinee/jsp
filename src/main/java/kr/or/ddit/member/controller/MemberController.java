@@ -68,8 +68,9 @@ public class MemberController {
 		
 		logger.debug("memberList : {} , pages : {}", maps.get("memberList"), maps.get("pages"));
 		
-		return "member/memberlist";
+		return "tiles/membertiles/memberlistContents";
 	}
+	
 	
 	// 각 멤버 정보
 	@RequestMapping(path ="/member", method = {RequestMethod.GET})
@@ -80,8 +81,8 @@ public class MemberController {
 		
 		MemberVO membervo = memberservice.getMember(userid);
 		model.addAttribute("memberVo", membervo);
-
-		return "member/member";
+	
+		return "tiles/membertiles/memberContents";
 	}
 	
 	// 이미지 출력
@@ -148,7 +149,7 @@ public class MemberController {
 	@RequestMapping(path ="/memberRegist", method = {RequestMethod.GET})
 	public String memberRegist() {
 
-		return "member/memberRegist";
+		return "tiles/membertiles/memberRegistContents";
 	}
 	
 	// 멤버 등록
@@ -161,11 +162,11 @@ public class MemberController {
 		
 		// memberVo에 에러가존재하면
 		// 검증을 통과하지 못했으므로 사용자 등록 화면으로 이동
-		if(br.hasErrors()) {
-			System.out.println("dadadfadfaf");
-			
-			return "member/memberRegist";
-		}
+//		if(br.hasErrors()) {
+//			System.out.println("dadadfadfaf");
+//			
+//			return "member/memberRegist";
+//		}
 		
 		String filepath ="";
 		if(file.getSize()>0) {
@@ -190,7 +191,7 @@ public class MemberController {
 			
 		}else {	// 1건이 아닐때 : 비정상
 			
-			return "member/memberRegist";
+			return "tiles/membertiles/memberRegistContents";
 		}
 		
 		
@@ -203,8 +204,8 @@ public class MemberController {
 		
 		MemberVO memberVo = memberservice.getMember(userid);		
 		model.addAttribute("memberVo", memberVo);
-				
-		return "member/memberUpdate";
+
+		return "tiles/membertiles/memberUpdateContents";
 	}
 	
 	
@@ -227,11 +228,11 @@ public class MemberController {
 		ra.addAttribute("userid", memberVo.getUserid());
 		int updateCnt = memberservice.updateMember(memberVo);	
 		
-		if(updateCnt>0) {			
+		if(updateCnt>0) {	
 			return "redirect:/member/member";
 		}else {
 //			model.addAttribute("memberVo", memberVo);
-			return "member/memberUpdate";		
+			return "tiles/membertiles/memberUpdateContents";
 		}
 						
 	}
