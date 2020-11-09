@@ -19,10 +19,15 @@ public class MemberVO {
 	private String filename;
 	private String realfilename;
 	
-	
-	// 생성자가 존재시에는 기본생성자가 따로 생성되지 않기때문에 기본생성자를 만들어줘야한다.
 	public MemberVO() {
 		
+	}
+	
+	
+	// 생성자가 존재시에는 기본생성자가 따로 생성되지 않기때문에 기본생성자를 만들어줘야한다.
+	public MemberVO(String userid, String usernm) {
+		this.userid = userid;
+		this.usernm = usernm;
 	}
 	
 	
