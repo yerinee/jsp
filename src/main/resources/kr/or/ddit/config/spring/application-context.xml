@@ -26,9 +26,28 @@
 	
 	<!-- 우선순위 1. BeanName이랑 동일한 애가 있으면 bean으로 쓰겠다.-->
 	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="1"/>
+	</bean>
+	
+	
+	<!-- tiles view resolver추가
+		 1. tiles 설정 작업 ==> TilesConfigurer를 통해 설정 (3.0버전)
+		 2. tiles view resolver 등록 -->
+	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>classpath:kr/or/ddit/config/tiles/tiles-definition.xml</value>
+			</list>
+		</property>
+	</bean>
+	<!-- 버전주의 3으로 -->
+	<bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
 	 	 <!-- 우선순위가 높은 것먼저 실행하기때문에 value가 0인 것 먼저실행한다. -->
 		<property name="order" value="0"/>
 	</bean>
+
+
 	
 	<bean class ="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<!-- prefix : 접두어, suffix : 접미어
@@ -44,7 +63,7 @@
 			 즉, /WEB-INF/views/ 디렉토리 안에 있는 뷰의 파일이라는것을 알려주는 것이다.
 		  -->
 		  <!-- 우선순위가 높은 것먼저 실행하기때문에 value가 작은것 먼저실행한다. -->
-		<property name="order" value="1"/>
+		<property name="order" value="2"/>
 		<property name="prefix" value="/WEB-INF/views/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
@@ -75,7 +94,22 @@
 	
 	
 	
-
+	
+	
+	<!-- localeResolver -->	
+<!-- 	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"></bean> -->
+	
+	<!-- locale변경 감지 interceptor -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+				<property name="paramName" value="l.ang"></property>
+			</bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
+	
 	
 	
 	
