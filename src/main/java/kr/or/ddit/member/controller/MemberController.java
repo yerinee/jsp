@@ -72,18 +72,74 @@ public class MemberController {
 	}
 	
 	
+	
+	// 멤버리스트 ajax
+	@RequestMapping("/listAjaxPage")
+	public String listAjaxPage() {
+		return "tiles/membertiles/listAjaxPage";
+	}
+	
+	// 페이지 요청(/list와 다르게 page, pageSize 파라미터가 반드시 존재한다는 가정으로 작성)
+	@RequestMapping("/listAjax")
+	public String listAjax(PageVO pageVo, Model model) {
+		logger.debug("pageVo: {}", pageVo);
+		
+		Map<String , Object> maps = memberservice.selectMemberPageList(pageVo);
+		model.addAttribute("memberList", maps.get("memberList")); //페이지에 따른 멤버리스트
+		model.addAttribute("pages", maps.get("pages")); // 총 페이지수
+		
+		// jsonView의 bean네임을 통해 json으로 바꾸어준다.
+		return "jsonView"; 
+	}
+	
+	
+	@RequestMapping("/listAjaxHTML")
+	public String listAjaxHTML(PageVO pageVo, Model model) {
+		logger.debug("pageVo: {}", pageVo);
+		
+		Map<String , Object> maps = memberservice.selectMemberPageList(pageVo);
+		model.addAttribute("memberList", maps.get("memberList")); //페이지에 따른 멤버리스트
+		model.addAttribute("pages", maps.get("pages")); // 총 페이지수
+		
+		// 응답을 html -->  jsp로 생성
+		return "member/listAjaxHTML"; 
+	}
+	
+	
+	
+	
+	
+	
+	
 	// 각 멤버 정보
 	@RequestMapping(path ="/member", method = {RequestMethod.GET})
-	public String getMember(String userid, Model model,
-			 HttpServletRequest request, HttpServletResponse response) {
-		
-	
-		
+	public String getMember(String userid, Model model) {
+			
 		MemberVO membervo = memberservice.getMember(userid);
 		model.addAttribute("memberVo", membervo);
 	
 		return "tiles/membertiles/memberContents";
 	}
+	
+	// 멤버 정보 ajax
+	@RequestMapping("/memberAjaxPage")
+	public String memberAjaxPage() {
+		
+		
+		return "tiles/membertiles/memberContentsAjax";
+	}
+	
+	// 멤버 정보 ajax
+	@RequestMapping("/memberAjaxhtml")
+	public String memberAjaxhtml(String userid, Model model) {
+		
+		MemberVO membervo = memberservice.getMember(userid);
+		model.addAttribute("memberVo", membervo);
+		
+		// 응답을 html -->  jsp로 생성
+		return "member/memberContentsAjaxHTML";
+	}
+	
 	
 	// 이미지 출력
 	@RequestMapping(path ="/profileImg", method = {RequestMethod.GET})
