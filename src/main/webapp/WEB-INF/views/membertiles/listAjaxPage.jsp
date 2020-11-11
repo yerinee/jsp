@@ -40,19 +40,9 @@
 		
 
  	})
- 	
- 	function memberAjax(){
-		 	
-		 $.ajax({url :"/member/memberAjaxPage",
-				 data :{userid : userid},
-				 method : "get",
-				 success :function(data){				
-					}
-		 })
-	}
+
  	
  	function memberListAjax(p){
-
 		 $.ajax({url :"/member/listAjax",
 				data :{page :p, pageSize :5},
 				//data :"page=1&pageSize=5",
@@ -60,7 +50,6 @@
 				//   --> 컨트롤러에서 @requestBody로 써야한다.   JSON <========> JAVA OBJECT
 				method : "get",
 				success :function(data){
-//					alert(data)
 					// memberList tbody 영역에 들어갈 html 문자열 생성
 					var html = "";
 					for(var i=0; i<data.memberList.length; i++){
@@ -76,8 +65,6 @@
 						// 클라이언트의 결과는 서버쪽에 할당하는 것이 가능한데 반대로는 불가능하다.
 						html += "<td> "+ member.fmt_reg_dt +"</td>"
 						html += "</tr>"
-	
-	
 					}
 	
 					$('#memberlist').html(html);
@@ -91,15 +78,10 @@
 							html2 += "<li><a href=\"javascript:memberListAjax("+i+");\">"+i+"</a></li>";
 						}
 					}
-
-// 					alert(html2)
 					$('ul.pagination').html(html2);
-					
+	
 				}
-		 
-
 		})
-
 
 	}
 
@@ -109,9 +91,6 @@
 
 		 $.ajax({url :"/member/listAjaxHTML",
 				data :{page :p, pageSize :5},
-				//data :"page=1&pageSize=5",
-				//data :JSON.stringify({page :1, pageSize :5}), 
-				//   --> 컨트롤러에서 @requestBody로 써야한다.   JSON <========> JAVA OBJECT
 				method : "get",
 				success :function(data){					
 					var html = data.split("$$$$$SEPERATOR$$$$$");
@@ -120,10 +99,7 @@
 					$('ul.pagination').html(html[1]);
 					
 				}
-		 
-
 		})
-
 
 	}
 </script>
