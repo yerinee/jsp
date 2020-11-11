@@ -235,20 +235,24 @@ public class MemberController {
 			memberVo.setRealfilename(file.getOriginalFilename());
 			memberVo.setFilename(filepath);
 		}
-		
-		logger.debug("memberVo: {}", memberVo);
-		int insertCnt = memberservice.inserMember(memberVo);
-		logger.debug("insertCnt : {}",insertCnt);
-		
-		if(insertCnt >0) { // 1건이 입력되었을때 : 정상
+		try {
+			logger.debug("memberVo: {}", memberVo);
+			int insertCnt = memberservice.inserMember(memberVo);
+			logger.debug("insertCnt : {}",insertCnt);
 			
-			// 서버의 상태가 바뀔경우 새로고침시 오류가 발생하므로 redirect를 써주어야한다.-> 사용자페이지 조회요청
-			return "redirect:/member/memberlist";
 			
-		}else {	// 1건이 아닐때 : 비정상
+			if(insertCnt >0) { // 1건이 입력되었을때 : 정상
+				
+				// 서버의 상태가 바뀔경우 새로고침시 오류가 발생하므로 redirect를 써주어야한다.-> 사용자페이지 조회요청
+				return "redirect:/member/memberlist";
+			}
 			
+		}catch(Exception e) {
+			
+		}		
+	
 			return "tiles/membertiles/memberRegistContents";
-		}
+		
 		
 		
 	}

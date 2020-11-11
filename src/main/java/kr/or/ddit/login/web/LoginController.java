@@ -62,10 +62,10 @@ public class LoginController {
 	// ranger() ==> Model 객체에 rangers라는 이름의 속성이 저장됨 ==> json()
 	// Model객체 속성이 존재(rangers)
 	// @ModelAttribute를 가진 애들을 json형태로 바꿔준다.
-	@RequestMapping("/json")
-	public String json() {
-		
-		return "jsonView"; // <bean id ="jsonView" class="MappingJackson2JsonView"/> 와 동일
+//	@RequestMapping("/json")
+//	public String json() {
+//		
+//		return "jsonView"; // <bean id ="jsonView" class="MappingJackson2JsonView"/> 와 동일
 		
 				// view resolver를 두개 등록함
 				// 1. beanNameViewResolver
@@ -77,7 +77,7 @@ public class LoginController {
 				//    internalResourceViewResolver는 view 이름에 해당하는 
 				//    자원이 존재하는지, 존재하지 않는지 체크하지 않고 무조건 forwarding
 				//    ** viewResolver 우선순위를 가장 후순위로 미뤄야함
-	}
+//	}
 	
 	
 	
@@ -87,7 +87,7 @@ public class LoginController {
 	// 요청 메소드가 GET일 때만 처리
 	@RequestMapping(path = "/view", method = {RequestMethod.GET})
 	public String getView() {	
-		logger.debug("LoginController.getView()");
+//		logger.debug("LoginController.getView()");
 		return "login/view";
 	}
 	
@@ -101,19 +101,20 @@ public class LoginController {
 	// 		   jsp/servlet 기반의 request 역할을 담당
 	@RequestMapping(path = "/process")
 	public String process(String userid, String pass, MemberVO memberVo, 
-						    @RequestBody String body,
-							HttpSession session, Model model,
-							@RequestParam(name="email", 
-										  required = false, 
-										  defaultValue = "brown@line,kr") String user_id ) {
-		logger.debug("LoginController.process() {}/ {}/ {}",userid, pass, memberVo);
-		logger.debug("user_id :  {}  ", user_id);
+//						    @RequestBody String body,
+							HttpSession session, Model model){
+//							@RequestParam(name="email", 
+//										  required = false, 
+//										  defaultValue = "brown@line,kr") String user_id ) {
 		
-		logger.debug("body :  {}  ", body);
+//		logger.debug("LoginController.process() {}/ {}/ {}",userid, pass, memberVo);
+//		logger.debug("user_id :  {}  ", user_id);
+		
+//		logger.debug("body :  {}  ", body);
 		
 //		MemberServiceI memberService = new MemberService();
 		MemberVO dbmembervo = memberservice.getMember(userid);
-		logger.debug("membervo : {}",dbmembervo);
+//		logger.debug("membervo : {}",dbmembervo);
 		
 		if(dbmembervo != null && memberVo.getPass().equals(dbmembervo.getPass())) {
 			// prefix : /WEB-INF/views/

@@ -8,6 +8,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 import org.junit.Test;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -39,13 +40,14 @@ public class LoginControllerTest extends WebTestConfig{
 	@Test
 	public void pocessFailTest() throws Exception {
 		MvcResult result = mockMvc.perform(post("/login/process")
-								.param("userid", "brown")
+								.param("userid", "brown1")
 								.param("pass", "brownPass")).andReturn();
 		
 		ModelAndView mav = result.getModelAndView();
 		
 		assertEquals("login/view", mav.getViewName());
-//		assertEquals("fail", mav.getModel().get("msg"));
+		assertEquals("fail", mav.getModel().get("msg"));	
+
 	}
 	
 	

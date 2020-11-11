@@ -45,13 +45,13 @@ public class MemberService implements MemberServiceI {
 	// Map 새로 만들어서 pageSize와 pages를 정의할 경우
 	@Override
 	public Map<String , Object> getAllpage(Map<String, Integer> map) {
-		SqlSession sqlSession = MybatisUtil.getSqlSession();
+//		SqlSession sqlSession = MybatisUtil.getSqlSession();
 		
 		Map<String, Object> map2 = new HashMap<String, Object>();
 		
-		map2.put("memberList", memberDao.getAllpage(sqlSession, map));
+		map2.put("memberList", memberDao.getAllpage(map));
 		
-		int totalCnt = memberDao.selectMemberCount(sqlSession);
+		int totalCnt = memberDao.selectMemberCount();
 		int pages = (int)Math.ceil((double)totalCnt/ map.get("pageSize"));
 		map2.put("pages", pages);
 		
@@ -63,16 +63,16 @@ public class MemberService implements MemberServiceI {
 	@Override
 	public Map<String, Object> selectMemberPageList(PageVO pagevo) {
 		
-		SqlSession sqlSession = MybatisUtil.getSqlSession();
+//		SqlSession sqlSession = MybatisUtil.getSqlSession();
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		
-		map.put("memberList", memberDao.selectAllMemberPage(sqlSession,pagevo));
-		int totalCnt = memberDao.selectMemberCount(sqlSession);
+		map.put("memberList", memberDao.selectAllMemberPage(pagevo));
+		int totalCnt = memberDao.selectMemberCount();
 		int pages = (int)Math.ceil((double)totalCnt/ pagevo.getPageSize());
 		map.put("pages", pages);
 		
-		sqlSession.close();
+//		sqlSession.close();
 		return map;
 	}
 
@@ -101,7 +101,7 @@ public class MemberService implements MemberServiceI {
 
 	@Override
 	public int deleteMember(String userid) {
-		return 0;
+		return memberDao.deleteMember(userid);
 	}
 
 	@Override

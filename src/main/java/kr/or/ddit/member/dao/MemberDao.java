@@ -55,20 +55,20 @@ public class MemberDao implements MemberDaoI{
 	}
 
 	@Override
-	public List<MemberVO> getAllpage(SqlSession sqlSession,Map<String, Integer> map) {
+	public List<MemberVO> getAllpage(Map<String, Integer> map) {
 		
 		//sqlSession.commit(); // select문은 별도의 영향을 주지않기때문에 commit을 하지 않고 종료해도 된다.
 		return sqlSession.selectList("member.getAllpage", map);
 	}
 
 	@Override
-	public int selectMemberCount(SqlSession sqlSession) {	
+	public int selectMemberCount() {	
 
 		return sqlSession.selectOne("member.selectMemberCount");
 	}
 
 	@Override
-	public List<MemberVO> selectAllMemberPage(SqlSession sqlSession, PageVO pagevo) {
+	public List<MemberVO> selectAllMemberPage(PageVO pagevo) {
 		
 		//sqlSession.commit(); // select문은 별도의 영향을 주지않기때문에 commit을 하지 않고 종료해도 된다.
 		
@@ -84,29 +84,21 @@ public class MemberDao implements MemberDaoI{
 	
 	@Override
 	public int deleteMember(String userid) {
-//		SqlSession sqlSession = MybatisUtil.getSqlSession();
-		int deleteCnt = sqlSession.delete("member.deleteMember", userid);
-		if(deleteCnt == 1) {
-//			sqlSession.commit();
-		}else {
-//			sqlSession.rollback();
-		}
-//		sqlSession.close();
-		return deleteCnt;
+////		SqlSession sqlSession = MybatisUtil.getSqlSession();
+//		int deleteCnt = sqlSession.delete("member.deleteMember", userid);
+//		if(deleteCnt == 1) {
+////			sqlSession.commit();
+//		}else {
+////			sqlSession.rollback();
+//		}
+////		sqlSession.close();
+		return sqlSession.delete("member.deleteMember", userid);
 	}
 
 	@Override
 	public int updateMember(MemberVO memberVo) {
-//		SqlSession sqlSession = MybatisUtil.getSqlSession();
-		int updateCnt = sqlSession.update("member.updateMember", memberVo);
-		System.out.println("updateCnt :: " + updateCnt);
-		if(updateCnt == 1) {
-//			sqlSession.commit();
-		}else {
-//			sqlSession.rollback();
-		}
-//		sqlSession.close();
-		return updateCnt;
+
+		return sqlSession.update("member.updateMember", memberVo);
 	}
 
 }

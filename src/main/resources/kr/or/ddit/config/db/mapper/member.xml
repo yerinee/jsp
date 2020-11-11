@@ -67,12 +67,11 @@
         <if test="pass != null">pass=#{pass},</if>
         <if test="zipcode != null">zipcode=#{zipcode},</if>
         <if test="realfilename != null">realfilename=#{realfilename},</if>
-<!--         realfilename=#{realfilename, jdbcType =VARCHAR2} -->
         <if test="filename != null">filename=#{filename}</if>
     </set>											
 	WHERE userid =#{userid}
  </update>
- 
+ <!--         realfilename=#{realfilename, jdbcType =VARCHAR2} -->
  
 <!--  UPDATE users SET usernm = #{usernm}, alias=#{alias}, addr1=#{addr1},	 -->
 <!--  							addr2=#{addr2}, zipcode=#{zipcode}, pass=#{pass}, -->

@@ -17,13 +17,13 @@ public interface MemberDaoI {
 	List<MemberVO> selectAllMember();
 	
 	// map을 이용한 페이징 처리
-	List<MemberVO> getAllpage(SqlSession sqlSession, Map<String, Integer> map);
+	List<MemberVO> getAllpage(Map<String, Integer> map);
 	
 	// vo를 이용한 페이징 처리
-	List<MemberVO> selectAllMemberPage(SqlSession sqlSession, PageVO pagevo);
+	List<MemberVO> selectAllMemberPage(PageVO pagevo);
 	
 	// 멤버테이블에 담긴 멤버수
-	int selectMemberCount(SqlSession sqlSession);
+	int selectMemberCount();
 	
 	// 새로운 멤버 등록
 	int inserMember(MemberVO memberVo);
