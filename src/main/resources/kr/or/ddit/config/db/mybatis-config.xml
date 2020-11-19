@@ -7,6 +7,8 @@
 	
 		<typeAlias type="kr.or.ddit.member.model.MemberVO" alias="MemberVo"/>	
 		<typeAlias type="kr.or.ddit.member.model.PageVO" alias="pageVo"/>			
+		<typeAlias type="kr.or.ddit.batch.yogurt.model.CycleVo" alias="CycleVo"/>			
+		<typeAlias type="kr.or.ddit.batch.yogurt.model.DailyVo" alias="DailyVo"/>			
 		
 	</typeAliases>
 <!-- sql세션으로 만들기 때문에 이부분의 connection pool은 중복됨으로 필요없다. -->
@@ -23,5 +25,6 @@
 <!--   </environments> -->
   <mappers>
     <mapper resource="kr/or/ddit/config/db/mapper/member.xml"/>
+    <mapper resource="kr/or/ddit/config/db/mapper/yogurt.xml"/>
   </mappers>
 </configuration>
