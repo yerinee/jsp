@@ -235,9 +235,10 @@ public class MemberController {
 			memberVo.setRealfilename(file.getOriginalFilename());
 			memberVo.setFilename(filepath);
 		}
+		int insertCnt = 0;
 		try {
 			logger.debug("memberVo: {}", memberVo);
-			int insertCnt = memberservice.inserMember(memberVo);
+			insertCnt = memberservice.inserMember(memberVo);
 			logger.debug("insertCnt : {}",insertCnt);
 			
 			
